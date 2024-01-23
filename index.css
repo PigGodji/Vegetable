@@ -7,26 +7,29 @@
     font-family: 'Prompt', sans-serif;
 }
 
-.container {
-    max-width: 1290px ;
-    margin: 0 auto ;
+.top-bar {
+    background-color: #f1f1f1;
+    overflow: hidden;
+}
+
+.top-bar a {
+    float: right;
+    display: block;
+    color: grey;
+    font-weight: 700;
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
 }
 
 
-nav ul {
-    margin-top: 50px;
-    display: flex;
-    list-style: none;
-    width: 600px;
-}
-
-nav ul li {
-    margin-right: 90px;
-    color: #000000;
+.top-bar a:hover {
+    color: black;
 }
 
 .logo {
     text-align: left;
+    margin-top: 50px;
 }
 .logo h1 {
     color: #00E45B;
@@ -39,9 +42,7 @@ nav ul li {
     font-size: 25px;
 }
 
-.header-info {
-    margin-top: 50px;
-}
+
 .header-content {
     margin-top: 15px;
 }
@@ -59,4 +60,9 @@ nav ul li {
     background:#A1A1A1;
     color: #000000;
     padding:.50rem 5.4rem ;
+}
+.info {
+    text-align: center;
+    max-width: 1000px ;
+    margin: 0 auto ;
 }
