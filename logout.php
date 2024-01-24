@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-        <h1></h1>
-    </body>
-</html>
+<?php
+      session_start();
+      session_destroy();
+      header("Location: index_reg.php");
+?>
