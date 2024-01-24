@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-        <h1></h1>
-    </body>
-</html>
+<?php 
+ 
+ $con = mysqli_connect("localhost","root","","pbl_db") or die("Couldn't connect");
+
+?>
