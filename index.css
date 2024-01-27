@@ -1,68 +1,91 @@
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap');
-
-*{
-    margin: 0 ;
-    padding: 0 ;
-    box-sizing: border-box ;
-    font-family: 'Prompt', sans-serif;
+body {
+    font-family: Arial, sans-serif;
 }
 
 .top-bar {
-    background-color: #f1f1f1;
+    background-color: #ffffff;
     overflow: hidden;
+}
+
+.top-bar p {
+    float: left;
+    font-weight: 900;
+    margin-top: 15px;
+    margin-left: 10px;
+    font-size: x-large;
+}
+
+.top-bar img {
+    float: left;
+    margin-left:  30px;
 }
 
 .top-bar a {
     float: right;
     display: block;
-    color: grey;
+    margin-top: 10px;
+    color: rgb(0, 0, 0);
     font-weight: 700;
     text-align: center;
     padding: 16px 16px;
     text-decoration: none;
 }
 
-
 .top-bar a:hover {
-    color: black;
+    color: #3CDE56;
 }
 
-.logo {
-    text-align: left;
-    margin-top: 50px;
-}
-.logo h1 {
-    color: #00E45B;
-    font-size: 45px;
-    margin-top: -15px;
+.top-bar #log-in {
+    background-color: #3CDE56;
+    color: #ffffff;
+    border-radius: 10px;
+    font-weight: 100;
 }
 
-.logo h5 {
-    color: #000000;
-    font-size: 25px;
+.top-bar #log-in:hover {
+    color: #ffffff;
+    background-color: #248b35;
 }
 
-
-.header-content {
-    margin-top: 15px;
+.top-bar #sign-in {
+    font-weight: 100;
 }
 
-.header-btn {
-    margin-top: 30px;
-}
-.signin { 
-    background:#36D23D;
-    color: #000000;
-    padding:.50rem 5rem ;
+.content {
+    width: 400px;
+    padding: 20px;
+    margin-left: 170px;
 }
 
-.login {
-    background:#A1A1A1;
-    color: #000000;
-    padding:.50rem 5.4rem ;
+.content h1 {
+    font-size: 60px;
 }
-.info {
-    text-align: center;
-    max-width: 1000px ;
-    margin: 0 auto ;
+
+.content p {
+    margin-bottom: 80px;
+}
+
+.content a {
+    padding: 17px 40px;
+    background-color: #3CDE56;
+    color: #ffffff;
+    border-radius: 10px;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+.content a:hover {
+    background-color: #248b35;
+    color: #ffffff;
+}
+
+.picture {
+    position: fixed;
+    top: 100px;
+    right: 100px;
+}
+
+.picture img {
+    height: fit-content;
+    width: fit-content;
 }
