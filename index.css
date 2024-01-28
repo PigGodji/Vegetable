@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #E7FBE8;
 }
 
 .top-bar {
@@ -24,6 +25,7 @@ body {
     float: right;
     display: block;
     margin-top: 10px;
+    margin-right: 10px;
     color: rgb(0, 0, 0);
     font-weight: 700;
     text-align: center;
@@ -52,40 +54,49 @@ body {
 }
 
 .content {
-    width: 400px;
-    padding: 20px;
-    margin-left: 170px;
+    align-items:center;
+    background-color: aqua;
+
 }
 
-.content h1 {
+.content .title {
+    margin-right: 20cm;
+    margin-left: 20px;
+    position: absolute;
+    top: 150px;
+    left: 150px;
+}
+
+.content .title h1 {
     font-size: 60px;
 }
 
-.content p {
+.content .title p {
     margin-bottom: 80px;
 }
 
-.content a {
+.content .title a {
     padding: 17px 40px;
     background-color: #3CDE56;
     color: #ffffff;
     border-radius: 10px;
-    font-weight: 300;
+    font-weight: 300; 
     text-decoration: none;
 }
 
-.content a:hover {
+.content .title a:hover {
     background-color: #248b35;
     color: #ffffff;
 }
 
-.picture {
-    position: fixed;
-    top: 100px;
+.content .picture {
+    margin-left: 450px;
+    position: absolute;
+    top: 120px;
     right: 100px;
 }
 
-.picture img {
+.content .picture img {
     height: fit-content;
     width: fit-content;
 }
