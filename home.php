@@ -3,9 +3,27 @@
 
    include("config.php");
    if(!isset($_SESSION['valid'])){
-    header("Location: index_reg.php");
+    header("Location: index.php");
    }
 ?>
+<?php 
+            
+            $id = $_SESSION['id'];
+            $query = mysqli_query($con,"SELECT*FROM users WHERE Id=$id");
+
+            while($result = mysqli_fetch_assoc($query)){
+                $res_username = $result['Username'];
+                $res_email = $result['Email'];
+                $res_weight = $result['Weight'];
+                $res_gender = $result['Gender'];
+                $res_likemenu = $result['Likemenu'];
+                $res_unlikeingredient = $result['Unlikeingredient'];
+                $res_id = $result['Id'];
+            }
+            
+            
+            ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,58 +34,29 @@
     <title>Home</title>
 </head>
 <body>
-
     <div class="top-bar">
-        <a href="#">About us</a>
-        <a href="info.html">Plan</a>
-        <a href="index.html">Home</a>
-
-        <div class="right-links">
+        <img src="logo.png">
+        <p>Plantner</p>
+         <div class="right-links">
+            <a href="edit.php"> <button class="btn">Change profile</button> </a>
             <a href="logout.php"> <button class="btn">Log Out</button> </a>
-            
-
         </div>
+        <a href="index.html">HOME</a>
     </div>
+    
     <main>
-
-        <div class="info-form">
-            <form method="post" name="myForm">
-                <label for="gender">Gender</label>
-                <select id="gender" name="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-                <label for="weight">Weight</label>
-                <input type="number" id="weight" name="weight" min="0" max="200">
-                <label for="likemenu">Menu that you like</label>
-                <input type="text" id="likemenu" name="likemenu">
-                <label for="unlikemenu">Menu that you don't like</label>
-                <input type="text" id="unlikemenu" name="unlikemenu">
-                <button type="submit" name="submit" value="save">Done</button>
-            </form>
+        <div class="main-box top">
+          <div class="top">
+            <div class="box">
+                <p>Hello <b><?php echo $res_username ?></b>, Welcome</p>
+                <p>Your email is <b><?php echo $res_email ?></b>.</p>
+                <p>Your weight is <b><?php echo $res_weight ?></b>kg</p>
+                <p>Your gender is <b><?php echo $res_gender ?></b>.</p>
+                <p>เมนูที่ชอบ คือ <b><?php echo $res_likemenu ?></b>.</p>
+                <p>วัตถุดิบที่แพ้/ไม่ชอบ คือ <b><?php echo $res_unlikeingredient ?></b>.</p>
+            </div>
         </div>
-        <script>
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxh75CgizBcz2TZr8MR5LPydFrgJ5SR3WMLlSfJKnzdZ0AldHd4CWjZlkY09xnvNULt/exec'
-            const form = document.forms['myForm']
-            form.addEventListener('submit', e => {
-                e.preventDefault()
-                fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                    .then(response => Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Success',
-                        showConfirmButton: false,
-                        timer: 1500
-                    }))
-                    .catch(error => console.error('Error!', error.message))
-                    .catch.contact - form.reset();
-            })
-        </script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-        
-       </div>
-
+        <a href="match.php"> <button class="btn">Match</button> </a>
     </main>
 </body>
 </html>
