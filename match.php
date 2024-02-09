@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
                                 
-                                <form method='post' action='match.php'> <button type='submit' name='match' value='yes-breakfast' class='match' id='breakfast' onclick='hideButton'>yes</button> <button type='submit' name='match' value='no-breakfast' class='re' id='breakfast'>no</button> </form><br>";
+                                <form method='post' action='match.php'> <button type='submit' name='match' value='yes-breakfast' class='match' id='breakfast' onclick='BhideButton'>yes</button> <button type='submit' name='match' value='no-breakfast' class='re' id='breakfast'>no</button> </form><br>";
             echo $breakfast_menu;
             $lunch = array_shift($menu);
             echo "<h1>มื้อกลางวัน</h1>";
@@ -77,7 +77,7 @@
                                 </div>
                             
                             </div>
-                            <form method='post' action='match.php'> <button type='submit' name='match' value='yes-lunch' class='match' id='lunch'>yes</button> <button type='submit' name='match' value='no-lunch' class='re' id='lunch'>no</button> </form><br>";
+                            <form method='post' action='match.php'> <button type='submit' name='match' value='yes-lunch' class='match' id='lunch' onclick='LhideButton'>yes</button> <button type='submit' name='match' value='no-lunch' class='re' id='lunch'>no</button> </form><br>";
             echo $lunch_menu;
             $dinner = array_shift($menu);
             echo "<h1>มื้อเย็น</h1>";
@@ -93,7 +93,7 @@
                                     Sodium: {$dinner['Sodium']}<br> 
                                 </div>
                             </div>
-                            <form method='post' action='match.php'> <button type='submit' name='match' value='yes-dinner' class='match' id=''dinner>yes</button> <button type='submit' name='match' value='no-dinner' class='re' id='dinner'>no</button> </form><br>";
+                            <form method='post' action='match.php'> <button type='submit' name='match' value='yes-dinner' class='match' id=''dinner onclick='DhideButton'>yes</button> <button type='submit' name='match' value='no-dinner' class='re' id='dinner'>no</button> </form><br>";
             echo $dinner_menu;
         } else {
             echo "No matching data found";
