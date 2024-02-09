@@ -11,10 +11,20 @@
     <title>Document</title>
 </head>
 <body>
+<div class="top-bar">
+        <img src="logo.png">
+        <p>Plantner</p>
+        <div class="right-links">
+            <a href="edit.php"> <button class="btn">Change profile</button> </a>
+            <a href="logout.php"> <button class="btn">Log Out</button> </a>
+        </div>
+        <a href="index.html" id='home'>HOME</a>
+    </div>
+
     <?php
         include("config.php");
         $id = $_SESSION['id'];
-        // $match = $_POST['match'];
+        $match = $_POST['match'];
         $user_sql = "SELECT Id, Username, Likemenu, Unlikeingredient FROM users WHERE id = '$id'";
         $user_result = $con -> query($user_sql);
         $user_row = $user_result -> fetch_assoc();
@@ -35,18 +45,55 @@
         }
 
         if (count($menu) > 0) {
-            echo "<h2>Match</h2>";
             $breakfast = array_shift($menu);
             echo "<h1>มื้อเช้า</h1>";
-            $breakfast_menu = "<h2>เมนู: {$breakfast['Name']}</h2>วัตถุดิบ: {$breakfast['Ingredients']} Calorie: {$breakfast['Calorie']} Carbohydrate: {$breakfast['Carbohydrate']} Protein: {$breakfast['Protein']} Fat: {$breakfast['Fat']} Vitamin: {$breakfast['Vitamin']} Sodium: {$breakfast['Sodium']} <form method='post' action='match.php'> <button type='submit' name='match' value='yes-breakfast'>เอาอันนี้</button> <button type='submit' name='match' value='no-breakfast'>แหวะ</button> </form><br>";
+            $breakfast_menu = " <div class='menubox'>
+                                    <h2>เมนู: {$breakfast['Name']}</h2>
+                                    <div class='menuinfo'>
+                                        วัตถุดิบ: {$breakfast['Ingredients']}<br> 
+                                        Calorie: {$breakfast['Calorie']}<br>
+                                        Carbohydrate: {$breakfast['Carbohydrate']}<br> 
+                                         Protein: {$breakfast['Protein']}<br>
+                                        Fat: {$breakfast['Fat']}<br>
+                                        Vitamin: {$breakfast['Vitamin']}<br>
+                                        Sodium: {$breakfast['Sodium']}
+                                    </div>
+                                </div>
+                                
+                                <form method='post' action='match.php'> <button type='submit' name='match' value='yes-breakfast' class='match'>yes</button> <button type='submit' name='match' value='no-breakfast' class='re'>no</button> </form><br>";
             echo $breakfast_menu;
             $lunch = array_shift($menu);
             echo "<h1>มื้อกลางวัน</h1>";
-            $lunch_menu = "<h2>เมนู: {$lunch['Name']}</h2>วัตถุดิบ: {$lunch['Ingredients']} Calorie: {$lunch['Calorie']} Carbohydrate: {$lunch['Carbohydrate']} Protein: {$lunch['Protein']} Fat: {$lunch['Fat']} Vitamin: {$lunch['Vitamin']} Sodium: {$lunch['Sodium']} <form method='post' action='match.php'> <button type='submit' name='match' value='yes-lunch'>เอาอันนี้</button> <button type='submit' name='match' value='no-lunch'>แหวะ</button> </form><br>";
+            $lunch_menu = "<div class='menubox'>
+                                <h2>เมนู: {$lunch['Name']}</h2>
+                                <div class='menuinfo'>
+                                    วัตถุดิบ: {$lunch['Ingredients']}<br>
+                                    Calorie: {$lunch['Calorie']} <br>
+                                    Carbohydrate: {$lunch['Carbohydrate']}<br>
+                                    Protein: {$lunch['Protein']}<br>
+                                    Fat: {$lunch['Fat']}<br>
+                                    Vitamin: {$lunch['Vitamin']}<br>
+                                    Sodium: {$lunch['Sodium']}<br>
+                                </div>
+                            
+                            </div>
+                            <form method='post' action='match.php'> <button type='submit' name='match' value='yes-lunch' class='match'>yes</button> <button type='submit' name='match' value='no-lunch' class='re'>no</button> </form><br>";
             echo $lunch_menu;
             $dinner = array_shift($menu);
             echo "<h1>มื้อเย็น</h1>";
-            $dinner_menu = "<h2>เมนู: {$dinner['Name']}</h2>วัตถุดิบ: {$dinner['Ingredients']} Calorie: {$dinner['Calorie']} Carbohydrate: {$dinner['Carbohydrate']} Protein: {$dinner['Protein']} Fat: {$dinner['Fat']} Vitamin: {$dinner['Vitamin']} Sodium: {$dinner['Sodium']} <form method='post' action='match.php'> <button type='submit' name='match' value='yes-dinner'>เอาอันนี้</button> <button type='submit' name='match' value='no-dinner'>แหวะ</button> </form><br>";
+            $dinner_menu = "<div class='menubox'>
+                                <h2>เมนู: {$dinner['Name']}</h2>
+                                <div class='menuinfo'>
+                                    วัตถุดิบ: {$dinner['Ingredients']}<br>
+                                    Calorie: {$dinner['Calorie']}<br> 
+                                    Carbohydrate: {$dinner['Carbohydrate']}<br> 
+                                    Protein: {$dinner['Protein']}<br> 
+                                    Fat: {$dinner['Fat']}<br> 
+                                    Vitamin: {$dinner['Vitamin']}<br> 
+                                    Sodium: {$dinner['Sodium']}<br> 
+                                </div>
+                            </div>
+                            <form method='post' action='match.php'> <button type='submit' name='match' value='yes-dinner' class='match'>yes</button> <button type='submit' name='match' value='no-dinner' class='re'>no</button> </form><br>";
             echo $dinner_menu;
         } else {
             echo "No matching data found";
