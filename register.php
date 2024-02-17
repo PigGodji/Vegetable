@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,8 +25,15 @@
             $weight = $_POST['weight'];
             $gender = $_POST['gender'];
             $likemenu = $_POST['likemenu'];
-            $unlikeingredient = $_POST['unlikeingredient'];
-            
+            $unlikeingred = $_POST['unlikeingred'];
+            $calories = $_POST["calories"];
+            $carbohydrate_MIN = $_POST['carbohydrate_MIN'];
+            $carbohydrate_MAX = $_POST['carbohydrate_MAX'];
+            $protien_MIN = $_POST['protien_MIN'];
+            $protien_MAX = $_POST['protien_MAX'];
+            $fat_MIN = $_POST['fat_MIN'];
+            $fat_MAX = $_POST['fat_MAX'];
+
          //verifying the unique email
 
          $verify_query = mysqli_query($con,"SELECT Email FROM users WHERE Email='$email'");
@@ -39,23 +45,17 @@
             echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
          }
          else{
-
-            mysqli_query($con,"INSERT INTO users(Username,Email,Password,Weight,Gender,Likemenu,Unlikeingredient) VALUES('$username','$email','$password','$weight','$gender','$likemenu','$unlikeingredient')") or die("Error Occured");
+            mysqli_query($con,"INSERT INTO users(Username,Email,Password,Weight,Gender,Likemenu,Unlikeingred,Calories,Carbohydrate_MIN,Carbohydrate_MAX,Protein_MIN,Protein_MAX,Fat_MIN,Fat_MAX) VALUES('$username','$email','$password','$weight','$gender','$likemenu','$unlikeingred','$calories','$carbohydrate_MIN','$carbohydrate_MAX','$protien_MIN','$protien_MAX','$fat_MIN','$fat_MAX')") or die("Error Occured");
 
             echo "<div class='message'>
                       <p>Registration successfully!</p>
                   </div> <br>";
-            echo "<a href='index.php'><button class='btn'>Login Now</button>";
-         
-
+            echo "<a href='login.php'><button class='btn'>Login Now</button>";
          }
-
          }else{
-         
         ?>
-
             <header>Sign Up</header>
-            <form action="" method="post">
+            <form method="post">
                 <div class="field input">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" autocomplete="off" required>
@@ -79,7 +79,7 @@
                     <div class="head">
                         <label for="gender">Gender</label>
                     </div>
-                    <select class="field input "name="gender">
+                    <select class="field input "name="gender" id="genderSelect">
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
@@ -90,21 +90,130 @@
                 </div>
                 
                 <div class="field input">
-                    <label for="unlikeingredient">วัตถุดิบที่แพ้/ไม่ชอบ</label>
-                    <input type="text" pattern="[ก-๙]+" name="unlikeingredient" id="unlikeingredient" autocomplete="off" required>
+                    <label for="unlikeingredd">วัตถุดิบที่แพ้/ไม่ชอบ</label>
+                    <input type="text" pattern="[ก-๙]+" name="unlikeingred" id="unlikeingred" autocomplete="off" required>
                 </div>
 
                 <div class="field">
-                    
                     <input type="submit" class="btn" name="submit" value="Register" required>
                 </div>
                 <div class="links">
-                    Already a member? <a href="index.php">Sign In</a>
+                    Already a member? <a href="login.php">Sign In</a>
                 </div>
                 
             </form>
         </div>
         <?php } ?>
       </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var form = document.querySelector("form");
+        form.addEventListener("submit", function(event) {
+            var weight = document.getElementById("weight");
+            var gender = document.querySelector('#genderSelect');
+            if (!gender) {
+                event.preventDefault();
+                return;
+            }
+
+            // calories calculated
+            var calories = 0;
+            if (gender.value === "male") {
+                calories = weight.value * 31;
+            } else if (gender.value === "female") {
+                calories = weight.value * 27;
+            } else {
+                event.preventDefault();
+                return;
+            }
+
+            // carbohydrate_MIN calculated
+            var carbohydrate_MIN = 0.45 * calories;
+
+            // carbohydrate_MAX calculated
+            var carbohydrate_MAX = 0.65 * calories;
+
+            // protien_MIN calculated
+            var protien_MIN = 0.2 * calories;
+
+            // protien_MAX calculated
+            var protien_MAX = 0.35 * calories;
+
+            // fat_MIN calculated
+            var fat_MIN = 0.1 * calories;
+
+            // fat_MAX calculated
+            var fat_MAX = 0.15 * calories;
+
+            // calories input
+            var caloriesInput = document.createElement("input");
+            caloriesInput.type = "hidden";
+            caloriesInput.name = "calories";
+            caloriesInput.value = calories;
+            form.appendChild(caloriesInput);
+
+            // carbohydrate_MIN input
+            var carbohydrate_MINInput = document.createElement("input");
+            carbohydrate_MINInput.type = "hidden";
+            carbohydrate_MINInput.name = "carbohydrate_MIN";
+            carbohydrate_MINInput.value = carbohydrate_MIN;
+            form.appendChild(carbohydrate_MINInput);
+
+            // carbohydrate_MAX input
+            var carbohydrate_MAXInput = document.createElement("input");
+            carbohydrate_MAXInput.type = "hidden";
+            carbohydrate_MAXInput.name = "carbohydrate_MAX";
+            carbohydrate_MAXInput.value = carbohydrate_MAX;
+            form.appendChild(carbohydrate_MAXInput);
+
+            // protien_MIN input
+            var protien_MINInput = document.createElement("input");
+            protien_MINInput.type = "hidden";
+            protien_MINInput.name = "protien_MIN";
+            protien_MINInput.value = protien_MIN;
+            form.appendChild(protien_MINInput);
+
+            // protien_MAX input
+            var protien_MAXInput = document.createElement("input");
+            protien_MAXInput.type = "hidden";
+            protien_MAXInput.name = "protien_MAX";
+            protien_MAXInput.value = protien_MAX;
+            form.appendChild(protien_MAXInput);
+
+            // fat_MIN input
+            var fat_MINInput = document.createElement("input");
+            fat_MINInput.type = "hidden";
+            fat_MINInput.name = "fat_MIN";
+            fat_MINInput.value = fat_MIN;
+            form.appendChild(fat_MINInput);
+
+            // fat_MAX input
+            var fat_MAXInput = document.createElement("input");
+            fat_MAXInput.type = "hidden";
+            fat_MAXInput.name = "fat_MAX";
+            fat_MAXInput.value = fat_MAX;
+            form.appendChild(fat_MAXInput);
+
+            // Safe the all value in SQL
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "register.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                }
+            };
+            xhr.send("calories=" + calories);
+            xhr.send("carbohydrate_MIN=" + carbohydrate_MIN);
+            xhr.send("carbohydrate_MAX=" + carbohydrate_MAX);
+            xhr.send("protien_MIN=" + protien_MIN);
+            xhr.send("protien_MAX=" + protien_MAX);
+            xhr.send("fat_MIN=" + fat_MIN);
+            xhr.send("fat_MAX=" + fat_MAX);
+        });
+    });
+</script>
+
 </body>
+
 </html>

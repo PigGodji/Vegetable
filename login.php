@@ -36,13 +36,14 @@
                    $_SESSION['weight'] = $row['Weight'];
                    $_SESSION['gender'] = $row['Gender'];
                    $_SESSION['likemenu'] = $row['Likemenu'];
-                   $_SESSION['unlikeingredient'] = $row['Unlikeingredient'];
+                   $_SESSION['unlikeingred'] = $row['Unlikeingred'];
+                   $_SESSION['calorie'] = $row['Calorie'];
                    $_SESSION['id'] = $row['Id'];
                }else{
                    echo "<div class='message_error'>
                      <p>Wrong Username or Password</p>
                       </div> <br>";
-                  echo "<a href='index.php'><button class='btn'>Go Back</button>";
+                  echo "<a href='login.php'><button class='btn'>Go Back</button>";
         
                }
                if(isset($_SESSION['valid'])){

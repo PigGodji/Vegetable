@@ -54,9 +54,10 @@ body {
 }
 
 .content {
-    width: 400px;
+    width: 80%;
     padding: 20px;
-    margin-left: 170px;
+    margin-left: 10%;
+    align-items: center;
 }
 
 .content h1 {
@@ -81,13 +82,4 @@ body {
     color: #ffffff;
 }
 
-.picture {
-    position: fixed;
-    top: 100px;
-    right: 100px;
-}
 
-.picture img {
-    height: fit-content;
-    width: fit-content;
-}

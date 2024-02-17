@@ -1,6 +1,5 @@
 <?php 
    session_start();
-
    include("config.php");
    if(!isset($_SESSION['valid'])){
     header("Location: index.php");
@@ -17,7 +16,8 @@
                 $res_weight = $result['Weight'];
                 $res_gender = $result['Gender'];
                 $res_likemenu = $result['Likemenu'];
-                $res_unlikeingredient = $result['Unlikeingredient'];
+                $res_unlikeingred = $result['Unlikeingred'];
+                $res_calories = $result['Calories'];
                 $res_id = $result['Id'];
             }
             
@@ -41,7 +41,7 @@
             <a href="edit.php"> <button class="btn">Change profile</button> </a>
             <a href="logout.php"> <button class="btn">Log Out</button> </a>
         </div>
-        <a href="index.html">HOME</a>
+        <a href="home.php">HOME</a>
     </div>
     
     <main>
@@ -50,10 +50,11 @@
             <div class="box">
                 <p>Hello <b><?php echo $res_username ?></b>, Welcome</p>
                 <p>Your email is <b><?php echo $res_email ?></b>.</p>
-                <p>Your weight is <b><?php echo $res_weight ?></b>kg</p>
+                <p>Your weight is <b><?php echo $res_weight ?></b> Kg.</p>
                 <p>Your gender is <b><?php echo $res_gender ?></b>.</p>
-                <p>เมนูที่ชอบ คือ <b><?php echo $res_likemenu ?></b>.</p>
-                <p>วัตถุดิบที่แพ้/ไม่ชอบ คือ <b><?php echo $res_unlikeingredient ?></b>.</p>
+                <p>Favorite menu is <b><?php echo $res_likemenu ?></b>.</p>
+                <p>Allergie/Unliked ingredient is <b><?php echo $res_unlikeingred ?></b>.</p>
+                <p>Your calories is <b><?php echo $res_calories ?></b> Kgcal.</p>
             </div>
         </div>
         <a href="match.php"> <button class="btn">Match</button> </a>
